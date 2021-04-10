@@ -20,6 +20,7 @@ def lint():
       {
         "name": "Lint Dockerfiles",
         "image": "hadolint/hadolint:latest-debian",
+        "pull": "if-not-exists",
         "commands": [
           "hadolint --version",
           "hadolint */Dockerfile"
@@ -48,6 +49,7 @@ def test(name, composer_variant, dockerfile="Dockerfile"):
       {
         "name": "build test",
         "image": "plugins/docker",
+        "pull": "if-not-exists",
         "settings": {
           "dockerfile": "%s/%s" % (composer_variant, dockerfile),
           "dry_run": "true",
@@ -74,6 +76,7 @@ def release(name, composer_variant, dockerfile="Dockerfile", app_env="", custom_
       {
         "name": "determine tags",
         "image": "mwalbeck/determine-docker-tags",
+        "pull": "if-not-exists",
         "environment": {
           "VERSION_TYPE": "docker_env",
           "APP_NAME": "COMPOSER",
@@ -85,6 +88,7 @@ def release(name, composer_variant, dockerfile="Dockerfile", app_env="", custom_
       {
         "name": "build and publish",
         "image": "plugins/docker",
+        "pull": "if-not-exists",
         "settings": {
           "dockerfile": "%s/%s" % (composer_variant, dockerfile),
           "username": {
@@ -99,6 +103,7 @@ def release(name, composer_variant, dockerfile="Dockerfile", app_env="", custom_
       {
         "name": "notify",
         "image": "plugins/matrix",
+        "pull": "if-not-exists",
         "settings": {
           "homeserver": "https://matrix.mwalbeck.org",
           "roomid": {
