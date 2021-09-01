@@ -56,7 +56,7 @@ def test(name, composer_variant, dockerfile = "Dockerfile"):
                         "from_secret": "dockerhub_username",
                     },
                     "password": {
-                        "from_secret": "dockerhub_password",
+                        "from_secret": "dockerhub_password_ro",
                     },
                     "dry_run": "true",
                     "repo": "mwalbeck/composer",

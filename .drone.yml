@@ -40,7 +40,7 @@ steps:
     dockerfile: 1.10-php7.4/Dockerfile
     dry_run: true
     password:
-      from_secret: dockerhub_password
+      from_secret: dockerhub_password_ro
     repo: mwalbeck/composer
     username:
       from_secret: dockerhub_username
@@ -69,7 +69,7 @@ steps:
     dockerfile: 1.10-php8.0/Dockerfile
     dry_run: true
     password:
-      from_secret: dockerhub_password
+      from_secret: dockerhub_password_ro
     repo: mwalbeck/composer
     username:
       from_secret: dockerhub_username
@@ -98,7 +98,7 @@ steps:
     dockerfile: 2.0-php7.4/Dockerfile
     dry_run: true
     password:
-      from_secret: dockerhub_password
+      from_secret: dockerhub_password_ro
     repo: mwalbeck/composer
     username:
       from_secret: dockerhub_username
@@ -127,7 +127,7 @@ steps:
     dockerfile: 2.0-php8.0/Dockerfile
     dry_run: true
     password:
-      from_secret: dockerhub_password
+      from_secret: dockerhub_password_ro
     repo: mwalbeck/composer
     username:
       from_secret: dockerhub_username
@@ -362,6 +362,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: fb09cb73d9ec6d20997f4fef59f0997b5304a0c3ca0f21218e5eb539920f967e
+hmac: 0c98b5ef6aa390a0291a61521cd17bba4b2f52942ce747c126e4ef5339a46dc6
 
 ...
