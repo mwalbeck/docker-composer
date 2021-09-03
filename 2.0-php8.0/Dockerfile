@@ -1,4 +1,4 @@
-FROM php:8.0.10-cli-buster@sha256:664e195cd4e6fe16712700eed173f3c4149c9c3a3926e65231245e00b127b4ae
+FROM php:8.0.10-cli-buster@sha256:052eb98779d4be9a610a1554945b541c9be33602b9f453a80f5c7c2650f0eafc
 
 SHELL [ "/bin/bash", "-exo", "pipefail", "-c" ]
 
