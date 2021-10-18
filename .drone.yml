@@ -20,13 +20,13 @@ type: docker
 depends_on:
 - lint
 kind: pipeline
-name: test_1.10_php7.4
+name: test_1_php7.4
 steps:
 - image: plugins/docker
   name: build test
   pull: if-not-exists
   settings:
-    dockerfile: 1.10-php7.4/Dockerfile
+    dockerfile: 1-php7.4/Dockerfile
     dry_run: "true"
     password:
       from_secret: dockerhub_password_ro
@@ -41,13 +41,13 @@ type: docker
 depends_on:
 - lint
 kind: pipeline
-name: test_1.10_php8.0
+name: test_1_php8.0
 steps:
 - image: plugins/docker
   name: build test
   pull: if-not-exists
   settings:
-    dockerfile: 1.10-php8.0/Dockerfile
+    dockerfile: 1-php8.0/Dockerfile
     dry_run: "true"
     password:
       from_secret: dockerhub_password_ro
@@ -62,13 +62,13 @@ type: docker
 depends_on:
 - lint
 kind: pipeline
-name: test_2.0_php7.4
+name: test_2_php7.4
 steps:
 - image: plugins/docker
   name: build test
   pull: if-not-exists
   settings:
-    dockerfile: 2.0-php7.4/Dockerfile
+    dockerfile: 2-php7.4/Dockerfile
     dry_run: "true"
     password:
       from_secret: dockerhub_password_ro
@@ -83,13 +83,13 @@ type: docker
 depends_on:
 - lint
 kind: pipeline
-name: test_2.0_php8.0
+name: test_2_php8.0
 steps:
 - image: plugins/docker
   name: build test
   pull: if-not-exists
   settings:
-    dockerfile: 2.0-php8.0/Dockerfile
+    dockerfile: 2-php8.0/Dockerfile
     dry_run: "true"
     password:
       from_secret: dockerhub_password_ro
@@ -104,13 +104,13 @@ type: docker
 depends_on:
 - lint
 kind: pipeline
-name: release_1.10_php7.4
+name: release_1_php7.4
 steps:
 - environment:
     APP_ENV: php7.4
     APP_NAME: COMPOSER
     CUSTOM_TAGS: ""
-    DOCKERFILE_PATH: 1.10-php7.4/Dockerfile
+    DOCKERFILE_PATH: 1-php7.4/Dockerfile
     VERSION_TYPE: docker_env
   image: mwalbeck/determine-docker-tags
   name: determine tags
@@ -119,7 +119,7 @@ steps:
   name: build and publish
   pull: if-not-exists
   settings:
-    dockerfile: 1.10-php7.4/Dockerfile
+    dockerfile: 1-php7.4/Dockerfile
     password:
       from_secret: dockerhub_password
     repo: mwalbeck/composer
@@ -150,13 +150,13 @@ type: docker
 depends_on:
 - lint
 kind: pipeline
-name: release_1.10_php8.0
+name: release_1_php8.0
 steps:
 - environment:
     APP_ENV: php8.0
     APP_NAME: COMPOSER
     CUSTOM_TAGS: ""
-    DOCKERFILE_PATH: 1.10-php8.0/Dockerfile
+    DOCKERFILE_PATH: 1-php8.0/Dockerfile
     VERSION_TYPE: docker_env
   image: mwalbeck/determine-docker-tags
   name: determine tags
@@ -165,7 +165,7 @@ steps:
   name: build and publish
   pull: if-not-exists
   settings:
-    dockerfile: 1.10-php8.0/Dockerfile
+    dockerfile: 1-php8.0/Dockerfile
     password:
       from_secret: dockerhub_password
     repo: mwalbeck/composer
@@ -196,13 +196,13 @@ type: docker
 depends_on:
 - lint
 kind: pipeline
-name: release_2.0_php7.4
+name: release_2_php7.4
 steps:
 - environment:
     APP_ENV: php7.4
     APP_NAME: COMPOSER
     CUSTOM_TAGS: ""
-    DOCKERFILE_PATH: 2.0-php7.4/Dockerfile
+    DOCKERFILE_PATH: 2-php7.4/Dockerfile
     VERSION_TYPE: docker_env
   image: mwalbeck/determine-docker-tags
   name: determine tags
@@ -211,7 +211,7 @@ steps:
   name: build and publish
   pull: if-not-exists
   settings:
-    dockerfile: 2.0-php7.4/Dockerfile
+    dockerfile: 2-php7.4/Dockerfile
     password:
       from_secret: dockerhub_password
     repo: mwalbeck/composer
@@ -242,13 +242,13 @@ type: docker
 depends_on:
 - lint
 kind: pipeline
-name: release_2.0_php8.0
+name: release_2_php8.0
 steps:
 - environment:
     APP_ENV: php8.0
     APP_NAME: COMPOSER
     CUSTOM_TAGS: latest
-    DOCKERFILE_PATH: 2.0-php8.0/Dockerfile
+    DOCKERFILE_PATH: 2-php8.0/Dockerfile
     VERSION_TYPE: docker_env
   image: mwalbeck/determine-docker-tags
   name: determine tags
@@ -257,7 +257,7 @@ steps:
   name: build and publish
   pull: if-not-exists
   settings:
-    dockerfile: 2.0-php8.0/Dockerfile
+    dockerfile: 2-php8.0/Dockerfile
     password:
       from_secret: dockerhub_password
     repo: mwalbeck/composer
@@ -286,6 +286,6 @@ trigger:
 type: docker
 ---
 kind: signature
-hmac: 625dab74ac2f987a92f9905ff81b89c807d2d8347ba268bdcacbb65547af652b
+hmac: 3b7489ae148658d7f2c5e7ebcef3300e76c5629770ab9ebe749943a263819abe
 
 ...

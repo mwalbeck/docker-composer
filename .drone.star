@@ -1,14 +1,14 @@
 def main(ctx):
     return [
         lint(),
-        test("1.10_php7.4", "1.10-php7.4"),
-        test("1.10_php8.0", "1.10-php8.0"),
-        test("2.0_php7.4", "2.0-php7.4"),
-        test("2.0_php8.0", "2.0-php8.0"),
-        release("1.10_php7.4", "1.10-php7.4", app_env = "php7.4"),
-        release("1.10_php8.0", "1.10-php8.0", app_env = "php8.0"),
-        release("2.0_php7.4", "2.0-php7.4", app_env = "php7.4"),
-        release("2.0_php8.0", "2.0-php8.0", app_env = "php8.0", custom_tags = "latest"),
+        test("1_php7.4", "1-php7.4"),
+        test("1_php8.0", "1-php8.0"),
+        test("2_php7.4", "2-php7.4"),
+        test("2_php8.0", "2-php8.0"),
+        release("1_php7.4", "1-php7.4", app_env = "php7.4"),
+        release("1_php8.0", "1-php8.0", app_env = "php8.0"),
+        release("2_php7.4", "2-php7.4", app_env = "php7.4"),
+        release("2_php8.0", "2-php8.0", app_env = "php8.0", custom_tags = "latest"),
     ]
 
 def lint():
