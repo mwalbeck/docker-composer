@@ -3,7 +3,7 @@ FROM php:7.4.27-cli-bullseye@sha256:136a3482b37c29a48b605a59ea132d4b3f3a46e0250a
 SHELL [ "/bin/bash", "-exo", "pipefail", "-c" ]
 
 # renovate: datasource=github-tags depName=composer/composer versioning=semver
-ENV COMPOSER_VERSION 1.10.24
+ENV COMPOSER_VERSION 1.10.25
 ENV COMPOSER_INSTALLER_COMMIT 459bcaab2cc03f1656dd7b065d500d0cf3070e3f
 ENV COMPOSER_INSTALLER_HASH 756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3
 
