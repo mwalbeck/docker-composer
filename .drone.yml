@@ -171,6 +171,35 @@ depends_on:
 ---
 kind: pipeline
 type: docker
+name: test_2_php8.2
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build test
+  pull: if-not-exists
+  image: plugins/docker
+  settings:
+    dockerfile: 2-php8.2/Dockerfile
+    dry_run: true
+    password:
+      from_secret: dockerhub_password_ro
+    repo: mwalbeck/composer
+    username:
+      from_secret: dockerhub_username
+
+trigger:
+  event:
+  - pull_request
+
+depends_on:
+- lint
+
+---
+kind: pipeline
+type: docker
 name: release_1_php7.4
 
 platform:
@@ -404,7 +433,6 @@ steps:
   environment:
     APP_ENV: php8.1
     APP_NAME: COMPOSER
-    CUSTOM_TAGS: latest
     DOCKERFILE_PATH: 2-php8.1/Dockerfile
     VERSION_TYPE: docker_env
 
@@ -445,7 +473,63 @@ depends_on:
 - lint
 
 ---
+kind: pipeline
+type: docker
+name: release_2_php8.2
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: determine tags
+  pull: if-not-exists
+  image: mwalbeck/determine-docker-tags
+  environment:
+    APP_ENV: php8.2
+    APP_NAME: COMPOSER
+    CUSTOM_TAGS: latest
+    DOCKERFILE_PATH: 2-php8.2/Dockerfile
+    VERSION_TYPE: docker_env
+
+- name: build and publish
+  pull: if-not-exists
+  image: plugins/docker
+  settings:
+    dockerfile: 2-php8.2/Dockerfile
+    password:
+      from_secret: dockerhub_password
+    repo: mwalbeck/composer
+    username:
+      from_secret: dockerhub_username
+
+- name: notify
+  pull: if-not-exists
+  image: plugins/matrix
+  settings:
+    homeserver: https://matrix.mwalbeck.org
+    password:
+      from_secret: matrix_password
+    roomid:
+      from_secret: matrix_roomid
+    username:
+      from_secret: matrix_username
+  when:
+    status:
+    - failure
+    - success
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+
+depends_on:
+- lint
+
+---
 kind: signature
-hmac: 778babaa33fd2166491abc4e7326593097433fadb6301563b6d4b3b21c1d6400
+hmac: fa4effd2ecd0df9de6ac036e126b32285ebe9c2f36116657ba8034f491ec211a
 
 ...
