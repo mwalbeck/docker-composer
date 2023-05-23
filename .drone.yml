@@ -227,22 +227,6 @@ steps:
     username:
       from_secret: dockerhub_username
 
-- name: notify
-  pull: if-not-exists
-  image: plugins/matrix
-  settings:
-    homeserver: https://matrix.mwalbeck.org
-    password:
-      from_secret: matrix_password
-    roomid:
-      from_secret: matrix_roomid
-    username:
-      from_secret: matrix_username
-  when:
-    status:
-    - failure
-    - success
-
 trigger:
   branch:
   - master
@@ -281,22 +265,6 @@ steps:
     repo: mwalbeck/composer
     username:
       from_secret: dockerhub_username
-
-- name: notify
-  pull: if-not-exists
-  image: plugins/matrix
-  settings:
-    homeserver: https://matrix.mwalbeck.org
-    password:
-      from_secret: matrix_password
-    roomid:
-      from_secret: matrix_roomid
-    username:
-      from_secret: matrix_username
-  when:
-    status:
-    - failure
-    - success
 
 trigger:
   branch:
@@ -337,22 +305,6 @@ steps:
     username:
       from_secret: dockerhub_username
 
-- name: notify
-  pull: if-not-exists
-  image: plugins/matrix
-  settings:
-    homeserver: https://matrix.mwalbeck.org
-    password:
-      from_secret: matrix_password
-    roomid:
-      from_secret: matrix_roomid
-    username:
-      from_secret: matrix_username
-  when:
-    status:
-    - failure
-    - success
-
 trigger:
   branch:
   - master
@@ -392,22 +344,6 @@ steps:
     username:
       from_secret: dockerhub_username
 
-- name: notify
-  pull: if-not-exists
-  image: plugins/matrix
-  settings:
-    homeserver: https://matrix.mwalbeck.org
-    password:
-      from_secret: matrix_password
-    roomid:
-      from_secret: matrix_roomid
-    username:
-      from_secret: matrix_username
-  when:
-    status:
-    - failure
-    - success
-
 trigger:
   branch:
   - master
@@ -446,22 +382,6 @@ steps:
     repo: mwalbeck/composer
     username:
       from_secret: dockerhub_username
-
-- name: notify
-  pull: if-not-exists
-  image: plugins/matrix
-  settings:
-    homeserver: https://matrix.mwalbeck.org
-    password:
-      from_secret: matrix_password
-    roomid:
-      from_secret: matrix_roomid
-    username:
-      from_secret: matrix_username
-  when:
-    status:
-    - failure
-    - success
 
 trigger:
   branch:
@@ -503,22 +423,6 @@ steps:
     username:
       from_secret: dockerhub_username
 
-- name: notify
-  pull: if-not-exists
-  image: plugins/matrix
-  settings:
-    homeserver: https://matrix.mwalbeck.org
-    password:
-      from_secret: matrix_password
-    roomid:
-      from_secret: matrix_roomid
-    username:
-      from_secret: matrix_username
-  when:
-    status:
-    - failure
-    - success
-
 trigger:
   branch:
   - master
@@ -530,6 +434,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: fa4effd2ecd0df9de6ac036e126b32285ebe9c2f36116657ba8034f491ec211a
+hmac: 8914a0c9c98ced2148924285b67707ff32c08b646bfa6c3d6ad948376137fd59
 
 ...

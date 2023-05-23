@@ -110,29 +110,6 @@ def release(name, composer_variant, dockerfile = "Dockerfile", app_env = "", cus
                     "repo": "mwalbeck/composer",
                 },
             },
-            {
-                "name": "notify",
-                "image": "plugins/matrix",
-                "pull": "if-not-exists",
-                "settings": {
-                    "homeserver": "https://matrix.mwalbeck.org",
-                    "roomid": {
-                        "from_secret": "matrix_roomid",
-                    },
-                    "username": {
-                        "from_secret": "matrix_username",
-                    },
-                    "password": {
-                        "from_secret": "matrix_password",
-                    },
-                },
-                "when": {
-                    "status": [
-                        "failure",
-                        "success",
-                    ],
-                },
-            },
         ],
         "trigger": {
             "branch": [
