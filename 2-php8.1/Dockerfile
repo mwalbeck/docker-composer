@@ -1,4 +1,4 @@
-FROM php:8.1.30-cli-bullseye@sha256:c8013c2bb3354ccad76a59ccafb7606a091985a854efbc929b9543f79f05b392
+FROM php:8.1.30-cli-bullseye@sha256:6615c357c1ab78b88575b58a3b055f8d606dae721811ea49a3a6803fa723dbfd
 
 SHELL [ "/bin/bash", "-exo", "pipefail", "-c" ]
 
