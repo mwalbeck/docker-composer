@@ -113,6 +113,35 @@ depends_on:
 ---
 kind: pipeline
 type: docker
+name: test_2_php8.4
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build test
+  pull: if-not-exists
+  image: plugins/docker
+  settings:
+    dockerfile: 2-php8.4/Dockerfile
+    dry_run: true
+    password:
+      from_secret: dockerhub_password_ro
+    repo: mwalbeck/composer
+    username:
+      from_secret: dockerhub_username
+
+trigger:
+  event:
+  - pull_request
+
+depends_on:
+- lint
+
+---
+kind: pipeline
+type: docker
 name: release_2_php8.1
 
 platform:
@@ -204,7 +233,6 @@ steps:
   environment:
     APP_ENV: php8.3
     APP_NAME: COMPOSER
-    CUSTOM_TAGS: latest
     DOCKERFILE_PATH: 2-php8.3/Dockerfile
     VERSION_TYPE: docker_env
 
@@ -229,7 +257,47 @@ depends_on:
 - lint
 
 ---
+kind: pipeline
+type: docker
+name: release_2_php8.4
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: determine tags
+  pull: if-not-exists
+  image: mwalbeck/determine-docker-tags
+  environment:
+    APP_ENV: php8.4
+    APP_NAME: COMPOSER
+    CUSTOM_TAGS: latest
+    DOCKERFILE_PATH: 2-php8.4/Dockerfile
+    VERSION_TYPE: docker_env
+
+- name: build and publish
+  pull: if-not-exists
+  image: plugins/docker
+  settings:
+    dockerfile: 2-php8.4/Dockerfile
+    password:
+      from_secret: dockerhub_password
+    repo: mwalbeck/composer
+    username:
+      from_secret: dockerhub_username
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+
+depends_on:
+- lint
+
+---
 kind: signature
-hmac: 44c839f467ea963442ae6dfa09469525e9b4b9aa91e1cebb2bb33f856defa837
+hmac: fcc372edef5a413432143b6d9eb88cd8424d73d901013787350f6011ce9fde31
 
 ...

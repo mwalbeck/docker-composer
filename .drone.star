@@ -4,9 +4,11 @@ def main(ctx):
         test("2_php8.1", "2-php8.1"),
         test("2_php8.2", "2-php8.2"),
         test("2_php8.3", "2-php8.3"),
+        test("2_php8.4", "2-php8.4"),
         release("2_php8.1", "2-php8.1", app_env = "php8.1"),
         release("2_php8.2", "2-php8.2", app_env = "php8.2"),
-        release("2_php8.3", "2-php8.3", app_env = "php8.3", custom_tags = "latest"),
+        release("2_php8.3", "2-php8.3", app_env = "php8.3"),
+        release("2_php8.4", "2-php8.4", app_env = "php8.4", custom_tags = "latest"),
     ]
 
 def lint():
