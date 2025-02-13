@@ -35,6 +35,7 @@ jobs:
         uses: https://github.com/docker/build-push-action@v6
         with:
           tags: ${{ steps.tags.outputs.tags }}
+          context: ./php8.1
 
   php8_2:
     runs-on: dind
@@ -58,6 +59,7 @@ jobs:
         uses: https://github.com/docker/build-push-action@v6
         with:
           tags: ${{ steps.tags.outputs.tags }}
+          context: ./php8.2
 
   php8_3:
     runs-on: dind
@@ -81,6 +83,7 @@ jobs:
         uses: https://github.com/docker/build-push-action@v6
         with:
           tags: ${{ steps.tags.outputs.tags }}
+          context: ./php8.3
 
   php8_4:
     runs-on: dind
@@ -104,3 +107,4 @@ jobs:
         uses: https://github.com/docker/build-push-action@v6
         with:
           tags: ${{ steps.tags.outputs.tags }}
+          context: ./php8.4

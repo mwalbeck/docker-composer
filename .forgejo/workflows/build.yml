@@ -43,6 +43,7 @@ jobs:
         with:
           push: true
           tags: ${{ steps.tags.outputs.tags }}
+          context: ./php8.1
 
   php8_2:
     runs-on: dind
@@ -72,6 +73,7 @@ jobs:
         with:
           push: true
           tags: ${{ steps.tags.outputs.tags }}
+          context: ./php8.2
 
   php8_3:
     runs-on: dind
@@ -101,6 +103,7 @@ jobs:
         with:
           push: true
           tags: ${{ steps.tags.outputs.tags }}
+          context: ./php8.3
 
   php8_4:
     runs-on: dind
@@ -130,3 +133,4 @@ jobs:
         with:
           push: true
           tags: ${{ steps.tags.outputs.tags }}
+          context: ./php8.4
