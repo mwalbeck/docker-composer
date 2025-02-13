@@ -24,7 +24,7 @@ jobs:
           VERSION_TYPE: "docker_env"
           APP_ENV: "php8.1"
           APP_NAME: "COMPOSER"
-          DOCKERFILE_PATH: "2-php8.1/Dockerfile"
+          DOCKERFILE_PATH: "php8.1/Dockerfile"
           IMAGE_NAME: "mwalbeck/composer"
         run: |
           determine-docker-tags
@@ -47,7 +47,7 @@ jobs:
           VERSION_TYPE: "docker_env"
           APP_ENV: "php8.2"
           APP_NAME: "COMPOSER"
-          DOCKERFILE_PATH: "2-php8.2/Dockerfile"
+          DOCKERFILE_PATH: "php8.2/Dockerfile"
           IMAGE_NAME: "mwalbeck/composer"
         run: |
           determine-docker-tags
@@ -70,7 +70,7 @@ jobs:
           VERSION_TYPE: "docker_env"
           APP_ENV: "php8.3"
           APP_NAME: "COMPOSER"
-          DOCKERFILE_PATH: "2-php8.3/Dockerfile"
+          DOCKERFILE_PATH: "php8.3/Dockerfile"
           IMAGE_NAME: "mwalbeck/composer"
         run: |
           determine-docker-tags
@@ -93,7 +93,7 @@ jobs:
           VERSION_TYPE: "docker_env"
           APP_ENV: "php8.4"
           APP_NAME: "COMPOSER"
-          DOCKERFILE_PATH: "2-php8.4/Dockerfile"
+          DOCKERFILE_PATH: "php8.4/Dockerfile"
           IMAGE_NAME: "mwalbeck/composer"
         run: |
           determine-docker-tags
