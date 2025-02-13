@@ -1,0 +1,110 @@
+name: Test
+
+on: pull_request
+
+jobs:
+  lint:
+    if: github.ref != 'refs/heads/renovate/*'
+    runs-on: docker
+    steps:
+      - uses: actions/checkout@v4
+      - uses: https://github.com/hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+          recursive: true
+
+  php8_1:
+    runs-on: dind
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get docker tags
+        id: tags
+        shell: sh
+        env:
+          VERSION_TYPE: "docker_env"
+          APP_ENV: "php8.1"
+          APP_NAME: "COMPOSER"
+          DOCKERFILE_PATH: "php8.1/Dockerfile"
+          IMAGE_NAME: "mwalbeck/composer"
+        run: |
+          determine-docker-tags
+          dockerd &
+      - name: Set up Docker Buildx
+        uses: https://github.com/docker/setup-buildx-action@v3
+      - name: Test build
+        uses: https://github.com/docker/build-push-action@v6
+        with:
+          tags: ${{ steps.tags.outputs.tags }}
+          context: ./php8.1
+
+  php8_2:
+    runs-on: dind
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get docker tags
+        id: tags
+        shell: sh
+        env:
+          VERSION_TYPE: "docker_env"
+          APP_ENV: "php8.2"
+          APP_NAME: "COMPOSER"
+          DOCKERFILE_PATH: "php8.2/Dockerfile"
+          IMAGE_NAME: "mwalbeck/composer"
+        run: |
+          determine-docker-tags
+          dockerd &
+      - name: Set up Docker Buildx
+        uses: https://github.com/docker/setup-buildx-action@v3
+      - name: Test build
+        uses: https://github.com/docker/build-push-action@v6
+        with:
+          tags: ${{ steps.tags.outputs.tags }}
+          context: ./php8.2
+
+  php8_3:
+    runs-on: dind
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get docker tags
+        id: tags
+        shell: sh
+        env:
+          VERSION_TYPE: "docker_env"
+          APP_ENV: "php8.3"
+          APP_NAME: "COMPOSER"
+          DOCKERFILE_PATH: "php8.3/Dockerfile"
+          IMAGE_NAME: "mwalbeck/composer"
+        run: |
+          determine-docker-tags
+          dockerd &
+      - name: Set up Docker Buildx
+        uses: https://github.com/docker/setup-buildx-action@v3
+      - name: Test build
+        uses: https://github.com/docker/build-push-action@v6
+        with:
+          tags: ${{ steps.tags.outputs.tags }}
+          context: ./php8.3
+
+  php8_4:
+    runs-on: dind
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get docker tags
+        id: tags
+        shell: sh
+        env:
+          VERSION_TYPE: "docker_env"
+          APP_ENV: "php8.4"
+          APP_NAME: "COMPOSER"
+          DOCKERFILE_PATH: "php8.4/Dockerfile"
+          IMAGE_NAME: "mwalbeck/composer"
+        run: |
+          determine-docker-tags
+          dockerd &
+      - name: Set up Docker Buildx
+        uses: https://github.com/docker/setup-buildx-action@v3
+      - name: Test build
+        uses: https://github.com/docker/build-push-action@v6
+        with:
+          tags: ${{ steps.tags.outputs.tags }}
+          context: ./php8.4
