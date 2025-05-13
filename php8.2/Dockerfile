@@ -3,7 +3,7 @@ FROM php:8.2.28-cli-bookworm@sha256:ed4385b854a7ef4aeee1108c75333443d64c937faaf7
 SHELL [ "/bin/bash", "-exo", "pipefail", "-c" ]
 
 # renovate: datasource=github-tags depName=composer/composer versioning=semver
-ENV COMPOSER_VERSION 2.8.8
+ENV COMPOSER_VERSION 2.8.9
 ENV COMPOSER_INSTALLER_COMMIT 459bcaab2cc03f1656dd7b065d500d0cf3070e3f
 ENV COMPOSER_INSTALLER_HASH 756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3
 
