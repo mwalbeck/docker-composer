@@ -118,6 +118,7 @@ jobs:
           APP_NAME: "COMPOSER"
           DOCKERFILE_PATH: "php8.4/Dockerfile"
           IMAGE_NAME: "mwalbeck/composer"
+          CUSTOM_TAGS: "latest"
         run: |
           determine-docker-tags
           dockerd &
