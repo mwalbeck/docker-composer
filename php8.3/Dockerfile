@@ -1,4 +1,4 @@
-FROM php:8.3.23-cli-bookworm@sha256:6d3a720f866f32853491775acb25cbfb452232be1fba039fa37f1e8c69b54244
+FROM php:8.4.10-cli-bookworm@sha256:dab6b6a6c8f6770fc9259478036ca5f437f481a007a3e3e0ac0bd78694e4482b
 
 SHELL [ "/bin/bash", "-exo", "pipefail", "-c" ]
 
