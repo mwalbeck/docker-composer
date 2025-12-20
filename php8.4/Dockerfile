@@ -1,9 +1,9 @@
-FROM php:8.4.11-cli-bullseye@sha256:aa9ca431aa35219492184f73202359109e172e33710e7d9928ee7da600b60cb7
+FROM php:8.4.11-cli-trixie@sha256:646a273baa1c20da9510147bb4fcd7365bdbf4905dfe9cd929f4e0ad689af1f0
 
 SHELL [ "/bin/bash", "-exo", "pipefail", "-c" ]
 
 # renovate: datasource=github-tags depName=composer/composer versioning=semver
-ENV COMPOSER_VERSION 2.8.12
+ENV COMPOSER_VERSION 2.9.2
 ENV COMPOSER_INSTALLER_COMMIT 459bcaab2cc03f1656dd7b065d500d0cf3070e3f
 ENV COMPOSER_INSTALLER_HASH 756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3
 
