@@ -3,9 +3,9 @@ FROM php:8.5.1-cli-trixie@sha256:a740e945cd1641af38e6d7d2065bb8fba85f2a57b0488dc
 SHELL [ "/bin/bash", "-exo", "pipefail", "-c" ]
 
 # renovate: datasource=github-tags depName=composer/composer versioning=semver
-ENV COMPOSER_VERSION 2.9.2
-ENV COMPOSER_INSTALLER_COMMIT 459bcaab2cc03f1656dd7b065d500d0cf3070e3f
-ENV COMPOSER_INSTALLER_HASH 756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3
+ENV COMPOSER_VERSION=2.9.2
+ENV COMPOSER_INSTALLER_COMMIT=459bcaab2cc03f1656dd7b065d500d0cf3070e3f
+ENV COMPOSER_INSTALLER_HASH=756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3
 
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \
