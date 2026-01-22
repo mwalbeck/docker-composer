@@ -25,15 +25,10 @@ jobs:
           APP_ENV: "php8.2"
           APP_NAME: "COMPOSER"
           DOCKERFILE_PATH: "php8.2/Dockerfile"
-          IMAGE_NAME: "mwalbeck/composer"
+          IMAGE_NAME: "git.walbeck.it/mwalbeck/composer"
         run: |
           determine-docker-tags
           dockerd &
-      - name: Login to Docker Hub
-        uses: https://github.com/docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN_RO }}
       - name: Set up Docker Buildx
         uses: https://github.com/docker/setup-buildx-action@v3
       - name: Test build
@@ -54,15 +49,10 @@ jobs:
           APP_ENV: "php8.3"
           APP_NAME: "COMPOSER"
           DOCKERFILE_PATH: "php8.3/Dockerfile"
-          IMAGE_NAME: "mwalbeck/composer"
+          IMAGE_NAME: "git.walbeck.it/mwalbeck/composer"
         run: |
           determine-docker-tags
           dockerd &
-      - name: Login to Docker Hub
-        uses: https://github.com/docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN_RO }}
       - name: Set up Docker Buildx
         uses: https://github.com/docker/setup-buildx-action@v3
       - name: Test build
@@ -83,15 +73,10 @@ jobs:
           APP_ENV: "php8.4"
           APP_NAME: "COMPOSER"
           DOCKERFILE_PATH: "php8.4/Dockerfile"
-          IMAGE_NAME: "mwalbeck/composer"
+          IMAGE_NAME: "git.walbeck.it/mwalbeck/composer"
         run: |
           determine-docker-tags
           dockerd &
-      - name: Login to Docker Hub
-        uses: https://github.com/docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN_RO }}
       - name: Set up Docker Buildx
         uses: https://github.com/docker/setup-buildx-action@v3
       - name: Test build
@@ -112,15 +97,10 @@ jobs:
           APP_ENV: "php8.5"
           APP_NAME: "COMPOSER"
           DOCKERFILE_PATH: "php8.5/Dockerfile"
-          IMAGE_NAME: "mwalbeck/composer"
+          IMAGE_NAME: "git.walbeck.it/mwalbeck/composer"
         run: |
           determine-docker-tags
           dockerd &
-      - name: Login to Docker Hub
-        uses: https://github.com/docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN_RO }}
       - name: Set up Docker Buildx
         uses: https://github.com/docker/setup-buildx-action@v3
       - name: Test build
