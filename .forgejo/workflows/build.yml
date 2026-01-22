@@ -19,8 +19,9 @@ jobs:
     runs-on: dind
     steps:
       - uses: actions/checkout@v6
-      - name: Get docker tags
-        id: tags
+
+      - name: Get docker tags - Docker Hub
+        id: dockerhub_tags
         shell: sh
         env:
           VERSION_TYPE: "docker_env"
@@ -30,27 +31,52 @@ jobs:
           IMAGE_NAME: "mwalbeck/composer"
         run: |
           determine-docker-tags
+
+      - name: Get docker tags - Forgejo
+        id: forgejo_tags
+        shell: sh
+        env:
+          VERSION_TYPE: "docker_env"
+          APP_ENV: "php8.2"
+          APP_NAME: "COMPOSER"
+          DOCKERFILE_PATH: "php8.2/Dockerfile"
+          IMAGE_NAME: "git.walbeck.it/mwalbeck/composer"
+        run: |
+          determine-docker-tags
           dockerd &
+
       - name: Login to Docker Hub
         uses: https://github.com/docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Login to Forgejo registry
+        uses: https://github.com/docker/login-action@v3
+        with:
+          registry: git.walbeck.it
+          username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
+
       - name: Set up Docker Buildx
         uses: https://github.com/docker/setup-buildx-action@v3
+
       - name: Build and push
         uses: https://github.com/docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ steps.tags.outputs.tags }}
           context: ./php8.2
+          tags: |
+            ${{ steps.dockerhub_tags.outputs.tags }}
+            ${{ steps.forgejo_tags.outputs.tags }}
 
   php8_3:
     runs-on: dind
     steps:
       - uses: actions/checkout@v6
-      - name: Get docker tags
-        id: tags
+
+      - name: Get docker tags - Docker Hub
+        id: dockerhub_tags
         shell: sh
         env:
           VERSION_TYPE: "docker_env"
@@ -60,27 +86,52 @@ jobs:
           IMAGE_NAME: "mwalbeck/composer"
         run: |
           determine-docker-tags
+
+      - name: Get docker tags - Forgejo
+        id: forgejo_tags
+        shell: sh
+        env:
+          VERSION_TYPE: "docker_env"
+          APP_ENV: "php8.3"
+          APP_NAME: "COMPOSER"
+          DOCKERFILE_PATH: "php8.3/Dockerfile"
+          IMAGE_NAME: "git.walbeck.it/mwalbeck/composer"
+        run: |
+          determine-docker-tags
           dockerd &
+
       - name: Login to Docker Hub
         uses: https://github.com/docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Login to Forgejo registry
+        uses: https://github.com/docker/login-action@v3
+        with:
+          registry: git.walbeck.it
+          username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
+
       - name: Set up Docker Buildx
         uses: https://github.com/docker/setup-buildx-action@v3
+
       - name: Build and push
         uses: https://github.com/docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ steps.tags.outputs.tags }}
           context: ./php8.3
+          tags: |
+            ${{ steps.dockerhub_tags.outputs.tags }}
+            ${{ steps.forgejo_tags.outputs.tags }}
 
   php8_4:
     runs-on: dind
     steps:
       - uses: actions/checkout@v6
-      - name: Get docker tags
-        id: tags
+
+      - name: Get docker tags - Docker Hub
+        id: dockerhub_tags
         shell: sh
         env:
           VERSION_TYPE: "docker_env"
@@ -90,27 +141,52 @@ jobs:
           IMAGE_NAME: "mwalbeck/composer"
         run: |
           determine-docker-tags
+
+      - name: Get docker tags - Forgejo
+        id: forgejo_tags
+        shell: sh
+        env:
+          VERSION_TYPE: "docker_env"
+          APP_ENV: "php8.4"
+          APP_NAME: "COMPOSER"
+          DOCKERFILE_PATH: "php8.4/Dockerfile"
+          IMAGE_NAME: "git.walbeck.it/mwalbeck/composer"
+        run: |
+          determine-docker-tags
           dockerd &
+
       - name: Login to Docker Hub
         uses: https://github.com/docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Login to Forgejo registry
+        uses: https://github.com/docker/login-action@v3
+        with:
+          registry: git.walbeck.it
+          username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
+
       - name: Set up Docker Buildx
         uses: https://github.com/docker/setup-buildx-action@v3
+
       - name: Build and push
         uses: https://github.com/docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ steps.tags.outputs.tags }}
           context: ./php8.4
+          tags: |
+            ${{ steps.dockerhub_tags.outputs.tags }}
+            ${{ steps.forgejo_tags.outputs.tags }}
 
   php8_5:
     runs-on: dind
     steps:
       - uses: actions/checkout@v6
-      - name: Get docker tags
-        id: tags
+
+      - name: Get docker tags - Docker Hub
+        id: dockerhub_tags
         shell: sh
         env:
           VERSION_TYPE: "docker_env"
@@ -118,20 +194,43 @@ jobs:
           APP_NAME: "COMPOSER"
           DOCKERFILE_PATH: "php8.5/Dockerfile"
           IMAGE_NAME: "mwalbeck/composer"
-          CUSTOM_TAGS: "latest"
+        run: |
+          determine-docker-tags
+
+      - name: Get docker tags - Forgejo
+        id: forgejo_tags
+        shell: sh
+        env:
+          VERSION_TYPE: "docker_env"
+          APP_ENV: "php8.5"
+          APP_NAME: "COMPOSER"
+          DOCKERFILE_PATH: "php8.5/Dockerfile"
+          IMAGE_NAME: "git.walbeck.it/mwalbeck/composer"
         run: |
           determine-docker-tags
           dockerd &
+
       - name: Login to Docker Hub
         uses: https://github.com/docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Login to Forgejo registry
+        uses: https://github.com/docker/login-action@v3
+        with:
+          registry: git.walbeck.it
+          username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
+
       - name: Set up Docker Buildx
         uses: https://github.com/docker/setup-buildx-action@v3
+
       - name: Build and push
         uses: https://github.com/docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ steps.tags.outputs.tags }}
           context: ./php8.5
+          tags: |
+            ${{ steps.dockerhub_tags.outputs.tags }}
+            ${{ steps.forgejo_tags.outputs.tags }}
