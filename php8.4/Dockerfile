@@ -1,4 +1,4 @@
-FROM php:8.4.20-cli-trixie@sha256:c8c4d2165bf3139039094c99c9370ead168df29ffa6c12373268dca212f0c938
+FROM php:8.5.5-cli-trixie@sha256:b070c68324c164aa1a656e25fde6474be4d0d1677fbb83e909e7eb2ed5e28a93
 
 SHELL [ "/bin/bash", "-exo", "pipefail", "-c" ]
 
