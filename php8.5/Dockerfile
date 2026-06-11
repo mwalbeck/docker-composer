@@ -3,7 +3,7 @@ FROM php:8.5.5-cli-trixie@sha256:b070c68324c164aa1a656e25fde6474be4d0d1677fbb83e
 SHELL [ "/bin/bash", "-exo", "pipefail", "-c" ]
 
 # renovate: datasource=github-tags depName=composer/composer versioning=semver
-ENV COMPOSER_VERSION=2.9.8
+ENV COMPOSER_VERSION=2.10.1
 ENV COMPOSER_INSTALLER_COMMIT=459bcaab2cc03f1656dd7b065d500d0cf3070e3f
 ENV COMPOSER_INSTALLER_HASH=756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3
 
